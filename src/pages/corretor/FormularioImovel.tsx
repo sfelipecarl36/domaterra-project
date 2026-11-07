@@ -205,13 +205,13 @@ export default function FormularioImovel() {
       <div>
         <Link
           to="/corretor/imoveis"
-          className="mb-5 inline-flex items-center gap-2 text-sm text-slate-500 hover:text-[#071B2E]"
+          className="mb-5 inline-flex items-center gap-2 text-sm text-slate-500 hover:text-[#111111]"
         >
           <ArrowLeft size={17} />
           Voltar aos imóveis
         </Link>
 
-        <h1 className="text-3xl font-semibold text-[#071B2E]">
+        <h1 className="text-3xl font-semibold text-[#111111]">
           {editando ? "Editar imóvel" : "Cadastrar imóvel"}
         </h1>
 
@@ -226,9 +226,9 @@ export default function FormularioImovel() {
         className="space-y-8 rounded-2xl border border-slate-100 bg-white p-6 shadow-sm sm:p-8"
       >
         <div className="flex items-center gap-3 border-b border-slate-100 pb-5">
-          <House className="text-[#C9A34A]" size={24} />
+          <House className="text-[#FE540C]" size={24} />
 
-          <h2 className="text-lg font-semibold text-[#071B2E]">
+          <h2 className="text-lg font-semibold text-[#111111]">
             Informações do imóvel
           </h2>
         </div>
@@ -252,7 +252,7 @@ export default function FormularioImovel() {
               onChange={(e) =>
                 alterar("property_type", e.target.value)
               }
-              className="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-[#C9A34A]"
+              className="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-[#FE540C]"
             >
               <option value="apartamento">Apartamento</option>
               <option value="casa">Casa</option>
@@ -350,11 +350,11 @@ export default function FormularioImovel() {
               alterar("description", e.target.value)
             }
             placeholder="Descreva os diferenciais do imóvel..."
-            className="w-full resize-y rounded-lg border border-slate-200 px-4 py-3 text-sm outline-none focus:border-[#C9A34A]"
+            className="w-full resize-y rounded-lg border border-slate-200 px-4 py-3 text-sm outline-none focus:border-[#FE540C]"
           />
         </div>
 
-        <div className="rounded-xl border border-[#C9A34A]/30 bg-[#C9A34A]/10 p-4 text-sm leading-6 text-[#071B2E]">
+        <div className="rounded-xl border border-[#FE540C]/30 bg-[#FE540C]/10 p-4 text-sm leading-6 text-[#111111]">
           O imóvel será salvo como rascunho e não ficará
           visível no catálogo público.
         </div>
@@ -376,7 +376,7 @@ export default function FormularioImovel() {
           <button
             type="submit"
             disabled={salvando}
-            className="flex items-center justify-center gap-2 rounded-lg bg-[#071B2E] px-6 py-3 text-sm font-semibold text-white hover:bg-[#123754] disabled:opacity-60"
+            className="flex items-center justify-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-semibold text-white hover:bg-[#123754] disabled:opacity-60"
           >
             <Save size={18} />
             {salvando ? "Salvando..." : "Salvar imóvel"}
@@ -422,7 +422,7 @@ function Campo({
         min={min}
         step={step}
         required={required}
-        className="w-full rounded-lg border border-slate-200 px-4 py-3 text-sm outline-none focus:border-[#C9A34A]"
+        className="w-full rounded-lg border border-slate-200 px-4 py-3 text-sm outline-none focus:border-[#FE540C]"
       />
     </div>
   );

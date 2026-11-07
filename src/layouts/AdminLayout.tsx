@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import {
@@ -61,7 +62,7 @@ export default function AdminLayout() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F5F6F8]">
+    <div className="min-h-screen bg-[#F7F7F7]">
       <div className="flex min-h-screen">
         {menuAberto && (
           <button
@@ -73,21 +74,21 @@ export default function AdminLayout() {
         )}
 
         <aside
-          className={`fixed inset-y-0 left-0 z-50 flex w-72 flex-col bg-[#071B2E] text-white transition-transform duration-300 lg:sticky lg:top-0 lg:h-screen lg:translate-x-0 ${
+          className={`fixed inset-y-0 left-0 z-50 flex w-72 flex-col border-r border-gray-200 bg-white text-[#111111] shadow-sm transition-transform duration-300 lg:sticky lg:top-0 lg:h-screen lg:translate-x-0 ${
             menuAberto ? "translate-x-0" : "-translate-x-full"
           }`}
         >
-          <div className="flex h-24 items-center justify-between border-b border-white/10 px-6">
+          <div className="flex h-24 items-center justify-between border-b border-gray-200 px-6">
             <img
               src="/logo.png"
-              alt="Domaterra"
+              alt="Oxus Imobiliária"
               className="max-h-14 max-w-44 object-contain"
             />
 
             <button
               type="button"
               onClick={() => setMenuAberto(false)}
-              className="lg:hidden"
+              className="text-[#111111] lg:hidden"
               aria-label="Fechar menu"
             >
               <X size={23} />
@@ -95,7 +96,7 @@ export default function AdminLayout() {
           </div>
 
           <div className="px-6 pt-7">
-            <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#C9A34A]">
+            <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#FE540C]">
               <ShieldCheck size={16} />
               Administração
             </p>
@@ -114,8 +115,8 @@ export default function AdminLayout() {
                   className={({ isActive }) =>
                     `flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-colors ${
                       isActive
-                        ? "bg-[#C9A34A] text-[#071B2E]"
-                        : "text-slate-300 hover:bg-white/10 hover:text-white"
+                        ? "bg-[#FE540C] text-white shadow-sm"
+                        : "text-[#333333] hover:bg-[#FFF1EB] hover:text-[#FE540C]"
                     }`
                   }
                 >
@@ -126,10 +127,10 @@ export default function AdminLayout() {
             })}
           </nav>
 
-          <div className="space-y-2 border-t border-white/10 p-4">
+          <div className="space-y-2 border-t border-gray-200 p-4">
             <NavLink
               to="/"
-              className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm text-slate-300 hover:bg-white/10"
+              className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm text-[#333333] transition-colors hover:bg-[#FFF1EB] hover:text-[#FE540C]"
             >
               <ArrowLeft size={19} />
               Voltar ao site
@@ -139,7 +140,7 @@ export default function AdminLayout() {
               type="button"
               onClick={sair}
               disabled={saindo}
-              className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm text-slate-300 hover:bg-white/10 disabled:opacity-50"
+              className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm text-[#333333] transition-colors hover:bg-[#FFF1EB] hover:text-[#FE540C] disabled:opacity-50"
             >
               <LogOut size={19} />
               {saindo ? "Saindo..." : "Sair da conta"}
@@ -148,30 +149,31 @@ export default function AdminLayout() {
         </aside>
 
         <div className="min-w-0 flex-1">
-          <header className="sticky top-0 z-30 flex h-20 items-center justify-between border-b border-slate-200 bg-white px-5 lg:px-10">
+          <header className="sticky top-0 z-30 flex h-20 items-center justify-between border-b border-gray-200 bg-white px-5 lg:px-10">
             <div className="flex items-center gap-4">
               <button
                 type="button"
                 onClick={() => setMenuAberto(true)}
-                className="text-[#071B2E] lg:hidden"
+                className="text-[#111111] lg:hidden"
                 aria-label="Abrir menu"
               >
                 <Menu size={25} />
               </button>
 
               <div>
-                <p className="text-sm font-semibold text-[#071B2E]">
+                <p className="text-sm font-semibold text-[#111111]">
                   Painel Administrativo
                 </p>
-                <p className="hidden text-xs text-slate-500 sm:block">
-                  Gestão da plataforma Domaterra
+
+                <p className="hidden text-xs text-gray-500 sm:block">
+                  Gestão da plataforma Oxus
                 </p>
               </div>
             </div>
 
             <div
               title={user?.email ?? "Administrador"}
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-[#071B2E] text-[#C9A34A]"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-[#FFF1EB] text-[#FE540C]"
             >
               <ShieldCheck size={20} />
             </div>

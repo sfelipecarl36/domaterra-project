@@ -109,7 +109,7 @@ Deno.serve(async (req) => {
                     headers: {
                         accept: "application/json",
                         access_token: chaveAsaas!,
-                        "User-Agent": "Domaterra/1.0",
+                        "User-Agent": "Oxus/1.0",
                     },
                 }
             );

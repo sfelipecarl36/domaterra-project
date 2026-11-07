@@ -72,14 +72,20 @@ export default function CadastroCorretor() {
   }
 
   return (
-    <main className="bg-[#F5F6F8] px-5 py-16">
-      <div className="mx-auto w-full max-w-xl rounded-2xl bg-white p-8 shadow-sm sm:p-10">
-        <div className="mb-8">
-          <h1 className="text-3xl font-semibold text-[#071B2E]">
-            Seja um corretor Domaterra
+    <main className="min-h-[75vh] bg-[#F7F7F7] px-5 py-16">
+      <div className="mx-auto w-full max-w-xl rounded-2xl border border-gray-200 bg-white p-8 shadow-sm sm:p-10">
+        <div className="mb-8 text-center">
+          <img
+            src="/logo.png"
+            alt="Oxus Imobiliária"
+            className="mx-auto mb-7 h-16 max-w-48 object-contain"
+          />
+
+          <h1 className="text-3xl font-semibold tracking-tight text-[#111111]">
+            Seja um corretor Oxus
           </h1>
 
-          <p className="mt-3 text-sm leading-6 text-slate-500">
+          <p className="mt-3 text-sm leading-6 text-[#555555]">
             Cadastre-se para solicitar acesso à plataforma
             e futuramente anunciar seus imóveis.
           </p>
@@ -120,14 +126,18 @@ export default function CadastroCorretor() {
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-medium text-slate-700">
+              <label
+                htmlFor="uf-creci"
+                className="mb-2 block text-sm font-medium text-[#333333]"
+              >
                 UF do CRECI
               </label>
 
               <select
+                id="uf-creci"
                 value={ufCreci}
                 onChange={(e) => setUfCreci(e.target.value)}
-                className="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-[#C9A34A]"
+                className="w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-[#111111] outline-none transition-colors focus:border-[#FE540C]"
               >
                 {estados.map((uf) => (
                   <option key={uf} value={uf}>
@@ -158,18 +168,18 @@ export default function CadastroCorretor() {
           <button
             type="submit"
             disabled={enviando}
-            className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#071B2E] py-4 font-semibold text-white transition-colors hover:bg-[#123754] disabled:opacity-60"
+            className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#FE540C] py-4 font-semibold text-white transition-colors hover:bg-[#E64B0A] disabled:cursor-not-allowed disabled:opacity-60"
           >
             <UserPlus size={19} />
             {enviando ? "Cadastrando..." : "Criar minha conta"}
           </button>
         </form>
 
-        <p className="mt-7 text-center text-sm text-slate-500">
+        <p className="mt-7 text-center text-sm text-[#555555]">
           Já possui uma conta?{" "}
           <Link
             to="/login"
-            className="font-semibold text-[#C9A34A]"
+            className="font-semibold text-[#FE540C] hover:underline"
           >
             Entrar
           </Link>
@@ -196,7 +206,7 @@ function Campo({
 }: CampoProps) {
   return (
     <div>
-      <label className="mb-2 block text-sm font-medium text-slate-700">
+      <label className="mb-2 block text-sm font-medium text-[#333333]">
         {label}
       </label>
 
@@ -206,7 +216,7 @@ function Campo({
         value={value}
         onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder}
-        className="w-full rounded-lg border border-slate-200 px-4 py-3 text-sm outline-none focus:border-[#C9A34A]"
+        className="w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-[#111111] placeholder:text-[#888888] outline-none transition-colors focus:border-[#FE540C]"
       />
     </div>
   );

@@ -1,11 +1,11 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { Save, UserRound } from "lucide-react";
+import { Link } from "react-router-dom";
 import { supabase } from "../../lib/supabase";
 import {
   buscarMeuPerfil,
   type Perfil,
 } from "../../services/perfilService";
-import { Link } from "react-router-dom";
 
 export default function MeuPerfil() {
   const [perfil, setPerfil] = useState<Perfil | null>(null);
@@ -77,46 +77,59 @@ export default function MeuPerfil() {
   }
 
   if (carregando) {
-    return <p className="text-slate-500">Carregando perfil...</p>;
+    return (
+      <p className="text-sm text-[#555555]">
+        Carregando perfil...
+      </p>
+    );
   }
 
   return (
     <div className="max-w-3xl space-y-6">
+      {/* Cabeçalho */}
       <div>
-        <h1 className="text-3xl font-semibold text-[#071B2E]">
+        <h1 className="text-3xl font-semibold text-[#111111]">
           Meu perfil
         </h1>
 
-        <p className="mt-2 text-sm text-slate-500">
+        <p className="mt-2 text-sm text-[#555555]">
           Atualize suas informações profissionais.
         </p>
       </div>
 
-      <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm sm:p-8">
+      {/* Cartão principal */}
+      <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
         <div className="mb-7 flex items-center gap-4">
-          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#071B2E] text-[#C9A34A]">
+          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#FFF1EB] text-[#FE540C]">
             <UserRound size={26} />
           </div>
 
           <div>
-            <h2 className="font-semibold text-[#071B2E]">
+            <h2 className="font-semibold text-[#111111]">
               Dados do corretor
             </h2>
 
-            <p className="text-sm text-slate-500">
+            <p className="text-sm text-[#555555]">
               Informações do seu cadastro
             </p>
           </div>
         </div>
 
+        {/* Mensagens */}
         {erro && (
-          <p role="alert" className="mb-5 rounded-lg bg-red-50 p-4 text-sm text-red-700">
+          <p
+            role="alert"
+            className="mb-5 rounded-lg bg-red-50 p-4 text-sm text-red-700"
+          >
             {erro}
           </p>
         )}
 
         {mensagem && (
-          <p role="status" className="mb-5 rounded-lg bg-green-50 p-4 text-sm text-green-700">
+          <p
+            role="status"
+            className="mb-5 rounded-lg bg-green-50 p-4 text-sm text-green-700"
+          >
             {mensagem}
           </p>
         )}
@@ -151,34 +164,47 @@ export default function MeuPerfil() {
               />
             </div>
 
-            <div className="rounded-lg bg-slate-50 p-4">
-              <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
+            {/* Situação cadastral */}
+            <div className="rounded-xl border border-gray-200 bg-[#F7F7F7] p-4">
+              <p className="text-xs font-medium uppercase tracking-wide text-[#555555]">
                 Situação cadastral
               </p>
 
-              <p className="mt-1 font-semibold text-[#071B2E]">
-                {perfil.approval_status === "approved"
-                  ? "Aprovado"
-                  : perfil.approval_status === "rejected"
-                    ? "Não aprovado"
-                    : "Pendente de análise"}
-              </p>
+              <div className="mt-2">
+                {perfil.approval_status === "approved" ? (
+                  <span className="inline-flex rounded-full bg-green-50 px-3 py-1 text-sm font-semibold text-green-700">
+                    Aprovado
+                  </span>
+                ) : perfil.approval_status === "rejected" ? (
+                  <span className="inline-flex rounded-full bg-red-50 px-3 py-1 text-sm font-semibold text-red-700">
+                    Não aprovado
+                  </span>
+                ) : (
+                  <span className="inline-flex rounded-full bg-amber-50 px-3 py-1 text-sm font-semibold text-amber-700">
+                    Pendente de análise
+                  </span>
+                )}
+              </div>
             </div>
 
-            <button
-              type="submit"
-              disabled={salvando}
-              className="flex items-center justify-center gap-2 rounded-lg bg-[#071B2E] px-6 py-3 font-semibold text-white hover:bg-[#123754] disabled:opacity-60"
-            >
-              <Save size={18} />
-              {salvando ? "Salvando..." : "Salvar alterações"}
-            </button>
+            {/* Ações */}
+            <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap">
+              <button
+                type="submit"
+                disabled={salvando}
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#FE540C] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#E64B0A] disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                <Save size={18} />
+                {salvando ? "Salvando..." : "Salvar alterações"}
+              </button>
 
-            <Link
+              <Link
                 to="/corretor/contato"
-                className="inline-flex items-center rounded-lg bg-[#071B2E] px-5 py-3 text-sm font-semibold text-white">
+                className="inline-flex items-center justify-center rounded-lg border border-[#FE540C] bg-white px-5 py-3 text-sm font-semibold text-[#FE540C] transition-colors hover:bg-[#FFF1EB]"
+              >
                 Configurar contato profissional
-            </Link>
+              </Link>
+            </div>
           </form>
         )}
       </div>
@@ -197,7 +223,7 @@ function Campo({
 }) {
   return (
     <div>
-      <label className="mb-2 block text-sm font-medium text-slate-700">
+      <label className="mb-2 block text-sm font-medium text-[#333333]">
         {label}
       </label>
 
@@ -205,9 +231,8 @@ function Campo({
         required
         value={valor}
         onChange={(event) => alterar(event.target.value)}
-        className="w-full rounded-lg border border-slate-200 px-4 py-3 text-sm outline-none focus:border-[#C9A34A]"
+        className="w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-[#111111] outline-none transition-colors focus:border-[#FE540C]"
       />
     </div>
-    
   );
 }

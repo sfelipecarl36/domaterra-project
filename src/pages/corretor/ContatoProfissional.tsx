@@ -6,7 +6,9 @@ import {
   Phone,
   ShieldCheck,
 } from "lucide-react";
+
 import { useAuth } from "../../contexts/AuthContext";
+
 import {
   buscarMeuContato,
   salvarMeuContato,
@@ -107,39 +109,54 @@ export default function ContatoProfissional() {
   }
 
   if (carregando) {
-    return <p className="text-slate-500">Carregando...</p>;
+    return (
+      <p className="text-sm text-[#555555]">
+        Carregando...
+      </p>
+    );
   }
 
   return (
     <div className="mx-auto max-w-3xl space-y-6">
+      {/* Voltar */}
       <Link
         to="/corretor/perfil"
-        className="inline-flex items-center gap-2 text-sm text-slate-500"
+        className="inline-flex items-center gap-2 text-sm font-medium text-[#555555] transition-colors hover:text-[#FE540C]"
       >
         <ArrowLeft size={18} />
         Voltar ao perfil
       </Link>
 
+      {/* Cabeçalho */}
       <div>
-        <h1 className="text-3xl font-semibold text-[#071B2E]">
+        <h1 className="text-3xl font-semibold text-[#111111]">
           Contato profissional
         </h1>
 
-        <p className="mt-2 text-sm text-slate-500">
+        <p className="mt-2 text-sm text-[#555555]">
           Configure as informações que aparecerão nos seus anúncios.
         </p>
       </div>
 
+      {/* Formulário */}
       <form
         onSubmit={salvar}
-        className="space-y-6 rounded-2xl bg-white p-6 shadow-sm sm:p-8"
+        className="space-y-6 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8"
       >
-        <div className="flex items-center gap-3 border-b border-slate-100 pb-5">
-          <Phone size={23} className="text-[#C9A34A]" />
+        <div className="flex items-center gap-4 border-b border-gray-200 pb-5">
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#FFF1EB] text-[#FE540C]">
+            <Phone size={23} />
+          </div>
 
-          <h2 className="text-lg font-semibold text-[#071B2E]">
-            Informações de contato
-          </h2>
+          <div>
+            <h2 className="text-lg font-semibold text-[#111111]">
+              Informações de contato
+            </h2>
+
+            <p className="mt-1 text-sm text-[#555555]">
+              Dados exibidos aos interessados nos imóveis
+            </p>
+          </div>
         </div>
 
         <Campo
@@ -172,57 +189,66 @@ export default function ContatoProfissional() {
           placeholder="5591999999999"
         />
 
-        <div className="rounded-xl bg-[#F5F6F8] p-5">
+        {/* Autorização */}
+        <div className="rounded-xl border border-gray-200 bg-[#F7F7F7] p-5">
           <div className="flex items-start gap-3">
             <ShieldCheck
               size={22}
-              className="shrink-0 text-[#C9A34A]"
+              className="shrink-0 text-[#FE540C]"
             />
 
             <div>
-              <h3 className="text-sm font-semibold text-[#071B2E]">
+              <h3 className="text-sm font-semibold text-[#111111]">
                 Autorização de divulgação
               </h3>
 
-              <p className="mt-2 text-sm leading-6 text-slate-600">
+              <p className="mt-2 text-sm leading-6 text-[#555555]">
                 Seu nome profissional, CRECI e WhatsApp
                 comercial poderão ser exibidos publicamente
-                nos anúncios da Domaterra.
+                nos anúncios da Oxus.
               </p>
             </div>
           </div>
 
-          <label className="mt-5 flex cursor-pointer items-start gap-3">
+          <label className="mt-5 flex cursor-pointer items-start gap-3 rounded-lg border border-gray-200 bg-white p-4 transition-colors hover:border-[#FE540C]/40">
             <input
               type="checkbox"
               checked={autorizado}
               onChange={(e) => setAutorizado(e.target.checked)}
-              className="mt-1 accent-[#C9A34A]"
+              className="mt-1 h-4 w-4 shrink-0 accent-[#FE540C]"
             />
 
-            <span className="text-sm text-slate-700">
+            <span className="text-sm leading-6 text-[#333333]">
               Autorizo a divulgação dessas informações
               profissionais nos meus anúncios.
             </span>
           </label>
         </div>
 
+        {/* Mensagens */}
         {erro && (
-          <p role="alert" className="rounded-lg bg-red-50 p-4 text-sm text-red-700">
+          <p
+            role="alert"
+            className="rounded-lg bg-red-50 p-4 text-sm text-red-700"
+          >
             {erro}
           </p>
         )}
 
         {mensagem && (
-          <p role="status" className="rounded-lg bg-green-50 p-4 text-sm text-green-700">
+          <p
+            role="status"
+            className="rounded-lg bg-green-50 p-4 text-sm text-green-700"
+          >
             {mensagem}
           </p>
         )}
 
+        {/* Salvar */}
         <button
           type="submit"
           disabled={salvando}
-          className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#071B2E] px-6 py-4 text-sm font-semibold text-white disabled:opacity-50"
+          className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#FE540C] px-6 py-4 text-sm font-semibold text-white transition-colors hover:bg-[#E64B0A] disabled:cursor-not-allowed disabled:opacity-50"
         >
           <Save size={18} />
           {salvando ? "Salvando..." : "Salvar contato profissional"}
@@ -247,7 +273,7 @@ function Campo({
 }: CampoProps) {
   return (
     <div>
-      <label className="mb-2 block text-sm font-medium text-slate-700">
+      <label className="mb-2 block text-sm font-medium text-[#333333]">
         {label}
       </label>
 
@@ -256,7 +282,7 @@ function Campo({
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         required
-        className="w-full rounded-lg border border-slate-200 px-4 py-3 text-sm outline-none focus:border-[#C9A34A]"
+        className="w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-[#111111] placeholder:text-[#888888] outline-none transition-colors focus:border-[#FE540C]"
       />
     </div>
   );

@@ -36,26 +36,26 @@ export default function ImoveisDestaque() {
   }, []);
 
   return (
-    <section className="bg-[#F5F6F8] px-5 py-16">
+    <section className="bg-[#F7F7F7] px-5 py-16">
       <div className="mx-auto max-w-7xl">
         <div className="mb-9 flex flex-wrap items-end justify-between gap-5">
           <div>
-            <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-[#C9A34A]">
+            <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-[#FE540C]">
               Oportunidades selecionadas
             </p>
 
-            <h2 className="text-3xl font-semibold text-[#071B2E]">
+            <h2 className="text-3xl font-semibold text-[#111111]">
               Imóveis em destaque
             </h2>
 
             <p className="mt-3 text-sm text-slate-500">
-              Conheça os imóveis selecionados pela Domaterra.
+              Conheça os imóveis selecionados pela Oxus.
             </p>
           </div>
 
           <Link
             to="/imoveis"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-[#071B2E] hover:text-[#C9A34A]"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-[#111111] hover:text-[#FE540C]"
           >
             Ver todos os imóveis
             <ArrowRight size={18} />
@@ -74,9 +74,9 @@ export default function ImoveisDestaque() {
           </p>
         ) : imoveis.length === 0 ? (
           <div className="flex flex-col items-center justify-center rounded-2xl bg-white px-6 py-16 text-center">
-            <House size={40} className="text-[#C9A34A]" />
+            <House size={40} className="text-[#FE540C]" />
 
-            <h3 className="mt-4 text-lg font-semibold text-[#071B2E]">
+            <h3 className="mt-4 text-lg font-semibold text-[#111111]">
               Em breve, novos destaques
             </h3>
 

@@ -1,3 +1,4 @@
+
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import {
@@ -5,9 +6,11 @@ import {
   SlidersHorizontal,
   House,
 } from "lucide-react";
+
 import ImovelCard, {
   type Imovel,
 } from "../components/ImovelCard";
+
 import { buscarImoveis } from "../services/imoveisService";
 
 export default function Imoveis() {
@@ -110,19 +113,26 @@ export default function Imoveis() {
   }
 
   return (
-    <main className="min-h-[70vh] bg-[#F5F6F8]">
-      <section className="bg-[#071B2E] px-5 py-14 text-white">
+    <main className="min-h-[70vh] bg-[#F7F7F7]">
+      <section className="border-b border-gray-200 bg-white px-5 py-14">
         <div className="mx-auto max-w-7xl">
-          <h1 className="text-3xl font-semibold sm:text-4xl">
+          <span className="text-xs font-semibold uppercase tracking-widest text-[#FE540C]">
+            OXUS IMOBILIÁRIA
+          </span>
+
+          <h1 className="mt-3 text-3xl font-semibold tracking-tight text-[#111111] sm:text-4xl">
             Encontre seu próximo imóvel
           </h1>
 
-          <p className="mt-3 text-sm text-slate-300 sm:text-base">
-            Explore os imóveis disponíveis na Domaterra.
+          <p className="mt-3 text-sm text-[#555555] sm:text-base">
+            Explore os imóveis disponíveis na Oxus.
           </p>
 
-          <div className="mt-8 flex max-w-2xl items-center gap-3 rounded-xl bg-white px-5 py-4 text-[#071B2E]">
-            <Search size={21} className="shrink-0 text-slate-400" />
+          <div className="mt-8 flex max-w-2xl items-center gap-3 rounded-xl border border-gray-200 bg-[#F7F7F7] px-5 py-4 shadow-sm">
+            <Search
+              size={21}
+              className="shrink-0 text-[#FE540C]"
+            />
 
             <input
               value={busca}
@@ -137,7 +147,8 @@ export default function Imoveis() {
                 }
               }}
               placeholder="Busque por cidade, bairro ou imóvel"
-              className="w-full bg-transparent text-sm outline-none"
+              aria-label="Buscar imóveis"
+              className="w-full bg-transparent text-sm text-[#111111] placeholder:text-[#777777] outline-none"
             />
           </div>
         </div>
@@ -146,11 +157,11 @@ export default function Imoveis() {
       <section className="mx-auto max-w-7xl px-5 py-12">
         <div className="mb-7 flex flex-wrap items-center justify-between gap-4">
           <div>
-            <h2 className="text-2xl font-semibold text-[#071B2E]">
+            <h2 className="text-2xl font-semibold text-[#111111]">
               Imóveis disponíveis
             </h2>
 
-            <p className="mt-1 text-sm text-slate-500">
+            <p className="mt-1 text-sm text-[#555555]">
               {carregando
                 ? "Carregando..."
                 : `${filtrados.length} imóvel(is) encontrado(s)`}
@@ -160,7 +171,12 @@ export default function Imoveis() {
           <button
             type="button"
             onClick={() => setMostrarFiltros(!mostrarFiltros)}
-            className="flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-[#071B2E]"
+            aria-expanded={mostrarFiltros}
+            className={`flex items-center gap-2 rounded-lg border px-4 py-3 text-sm font-medium transition-colors ${
+              mostrarFiltros
+                ? "border-[#FE540C] bg-[#FFF1EB] text-[#FE540C]"
+                : "border-gray-200 bg-white text-[#111111] hover:border-[#FE540C] hover:text-[#FE540C]"
+            }`}
           >
             <SlidersHorizontal size={18} />
             Filtros
@@ -168,11 +184,12 @@ export default function Imoveis() {
         </div>
 
         {mostrarFiltros && (
-          <div className="mb-8 grid gap-4 rounded-xl border border-slate-100 bg-white p-5 md:grid-cols-4">
+          <div className="mb-8 grid gap-4 rounded-xl border border-gray-200 bg-white p-5 shadow-sm md:grid-cols-4">
             <select
               value={cidade}
-              onChange={(e) => setCidade(e.target.value)}
-              className="rounded-lg border border-slate-200 px-3 py-3 text-sm"
+              onChange={(event) => setCidade(event.target.value)}
+              aria-label="Filtrar por cidade"
+              className="rounded-lg border border-gray-200 bg-white px-3 py-3 text-sm text-[#333333] outline-none focus:border-[#FE540C]"
             >
               <option value="">Todas as cidades</option>
               {cidades.map((item) => (
@@ -184,8 +201,9 @@ export default function Imoveis() {
 
             <select
               value={precoMaximo}
-              onChange={(e) => setPrecoMaximo(e.target.value)}
-              className="rounded-lg border border-slate-200 px-3 py-3 text-sm"
+              onChange={(event) => setPrecoMaximo(event.target.value)}
+              aria-label="Filtrar por preço máximo"
+              className="rounded-lg border border-gray-200 bg-white px-3 py-3 text-sm text-[#333333] outline-none focus:border-[#FE540C]"
             >
               <option value="">Qualquer preço</option>
               <option value="300000">Até R$ 300 mil</option>
@@ -197,8 +215,9 @@ export default function Imoveis() {
 
             <select
               value={quartos}
-              onChange={(e) => setQuartos(e.target.value)}
-              className="rounded-lg border border-slate-200 px-3 py-3 text-sm"
+              onChange={(event) => setQuartos(event.target.value)}
+              aria-label="Filtrar por quantidade de quartos"
+              className="rounded-lg border border-gray-200 bg-white px-3 py-3 text-sm text-[#333333] outline-none focus:border-[#FE540C]"
             >
               <option value="">Qualquer quantidade de quartos</option>
               <option value="1">1+ quarto</option>
@@ -209,8 +228,9 @@ export default function Imoveis() {
 
             <select
               value={ordenacao}
-              onChange={(e) => setOrdenacao(e.target.value)}
-              className="rounded-lg border border-slate-200 px-3 py-3 text-sm"
+              onChange={(event) => setOrdenacao(event.target.value)}
+              aria-label="Ordenar imóveis"
+              className="rounded-lg border border-gray-200 bg-white px-3 py-3 text-sm text-[#333333] outline-none focus:border-[#FE540C]"
             >
               <option value="recentes">Mais recentes</option>
               <option value="menor-preco">Menor preço</option>
@@ -220,7 +240,7 @@ export default function Imoveis() {
             <button
               type="button"
               onClick={limparFiltros}
-              className="text-left text-sm font-medium text-[#C9A34A]"
+              className="text-left text-sm font-medium text-[#FE540C] hover:underline"
             >
               Limpar filtros
             </button>
@@ -228,24 +248,32 @@ export default function Imoveis() {
         )}
 
         {erro && (
-          <p role="alert" className="mb-6 rounded-xl bg-red-50 p-4 text-sm text-red-700">
+          <p
+            role="alert"
+            className="mb-6 rounded-xl bg-red-50 p-4 text-sm text-red-700"
+          >
             {erro}
           </p>
         )}
 
         {carregando ? (
-          <p className="py-16 text-center text-slate-500">
+          <p className="py-16 text-center text-[#555555]">
             Carregando imóveis...
           </p>
         ) : filtrados.length === 0 ? (
-          <div className="flex flex-col items-center justify-center rounded-2xl bg-white px-6 py-20 text-center">
-            <House size={44} className="text-[#C9A34A]" />
+          <div className="flex flex-col items-center justify-center rounded-2xl border border-gray-200 bg-white px-6 py-20 text-center">
+            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#FFF1EB]">
+              <House
+                size={36}
+                className="text-[#FE540C]"
+              />
+            </div>
 
-            <h3 className="mt-5 text-lg font-semibold text-[#071B2E]">
+            <h3 className="mt-5 text-lg font-semibold text-[#111111]">
               Nenhum imóvel encontrado
             </h3>
 
-            <p className="mt-2 max-w-md text-sm text-slate-500">
+            <p className="mt-2 max-w-md text-sm text-[#555555]">
               Ainda não existem imóveis publicados que correspondam
               aos filtros selecionados.
             </p>
@@ -253,7 +281,7 @@ export default function Imoveis() {
             <button
               type="button"
               onClick={limparFiltros}
-              className="mt-6 text-sm font-semibold text-[#C9A34A]"
+              className="mt-6 text-sm font-semibold text-[#FE540C] hover:underline"
             >
               Limpar filtros
             </button>

@@ -152,7 +152,7 @@ export default function DetalhesImovelAdmin() {
 
         <Link
           to="/admin/imoveis"
-          className="text-[#C9A34A]"
+          className="text-[#FE540C]"
         >
           Voltar aos imóveis
         </Link>
@@ -170,14 +170,14 @@ export default function DetalhesImovelAdmin() {
     <div className="space-y-7">
       <Link
         to="/admin/imoveis"
-        className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-[#071B2E]"
+        className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-[#111111]"
       >
         <ArrowLeft size={18} />
         Voltar aos imóveis
       </Link>
 
       <div>
-        <h1 className="text-3xl font-semibold text-[#071B2E]">
+        <h1 className="text-3xl font-semibold text-[#111111]">
           Analisar imóvel
         </h1>
 
@@ -208,7 +208,7 @@ export default function DetalhesImovelAdmin() {
       <div className="grid gap-7 xl:grid-cols-3">
         <div className="space-y-7 xl:col-span-2">
           <section className="rounded-2xl bg-white p-6 shadow-sm">
-            <h2 className="mb-5 text-xl font-semibold text-[#071B2E]">
+            <h2 className="mb-5 text-xl font-semibold text-[#111111]">
               Fotografias
             </h2>
 
@@ -237,7 +237,7 @@ export default function DetalhesImovelAdmin() {
                     )}
 
                     {index === 0 && (
-                      <span className="absolute left-2 top-2 rounded bg-[#C9A34A] px-2 py-1 text-xs font-semibold text-[#071B2E]">
+                      <span className="absolute left-2 top-2 rounded bg-[#FE540C] px-2 py-1 text-xs font-semibold text-[#111111]">
                         Principal
                       </span>
                     )}
@@ -248,11 +248,11 @@ export default function DetalhesImovelAdmin() {
           </section>
 
           <section className="rounded-2xl bg-white p-6 shadow-sm">
-            <h2 className="text-xl font-semibold text-[#071B2E]">
+            <h2 className="text-xl font-semibold text-[#111111]">
               {imovel.title}
             </h2>
 
-            <p className="mt-3 text-2xl font-semibold text-[#071B2E]">
+            <p className="mt-3 text-2xl font-semibold text-[#111111]">
               {preco}
             </p>
 
@@ -280,7 +280,7 @@ export default function DetalhesImovelAdmin() {
               />
             </div>
 
-            <h3 className="mt-6 font-semibold text-[#071B2E]">
+            <h3 className="mt-6 font-semibold text-[#111111]">
               Descrição
             </h3>
 
@@ -288,7 +288,7 @@ export default function DetalhesImovelAdmin() {
               {imovel.description || "Sem descrição."}
             </p>
 
-            <h3 className="mt-6 font-semibold text-[#071B2E]">
+            <h3 className="mt-6 font-semibold text-[#111111]">
               Endereço
             </h3>
 
@@ -300,7 +300,7 @@ export default function DetalhesImovelAdmin() {
 
         <aside>
           <div className="space-y-5 rounded-2xl bg-white p-6 shadow-sm">
-            <h2 className="text-lg font-semibold text-[#071B2E]">
+            <h2 className="text-lg font-semibold text-[#111111]">
               Situação do anúncio
             </h2>
 
@@ -322,7 +322,7 @@ export default function DetalhesImovelAdmin() {
                     type="button"
                     disabled={processando}
                     onClick={() => alterarStatus("published")}
-                    className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#071B2E] px-5 py-3 text-sm font-semibold text-white disabled:opacity-50"
+                    className="flex w-full items-center justify-center gap-2 rounded-lg bg-white px-5 py-3 text-sm font-semibold text-white disabled:opacity-50"
                   >
                     <CheckCircle2 size={18} />
                     {processando
@@ -396,8 +396,8 @@ function Caracteristica({
   valor,
 }: CaracteristicaProps) {
   return (
-    <div className="flex items-center gap-2 text-sm text-[#071B2E]">
-      <Icon size={20} className="text-[#C9A34A]" />
+    <div className="flex items-center gap-2 text-sm text-[#111111]">
+      <Icon size={20} className="text-[#FE540C]" />
       {valor}
     </div>
   );

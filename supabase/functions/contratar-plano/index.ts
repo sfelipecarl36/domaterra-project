@@ -227,7 +227,7 @@ Deno.serve(async (req) => {
                         "Content-Type": "application/json",
                         accept: "application/json",
                         access_token: chaveAsaas!,
-                        "User-Agent": "Domaterra/1.0",
+                        "User-Agent": "Oxus/1.0",
                     },
                     body: dados ? JSON.stringify(dados) : undefined,
                 }
@@ -285,7 +285,7 @@ Deno.serve(async (req) => {
                 value: Number(plano.price),
                 nextDueDate: dataHoje(),
                 cycle: "MONTHLY",
-                description: `Domaterra - ${plano.name}`,
+                description: `Oxus - ${plano.name}`,
                 externalReference: tentativa.id,
                 pixAutomaticAuthorizationMode: "DISABLED",
             }

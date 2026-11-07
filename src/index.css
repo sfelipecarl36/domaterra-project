@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+:root {
+  --cor-primaria: #FE540C;
+  --cor-texto: #111111;
+  --cor-fundo: #FFFFFF;
+  --cor-fundo-secundario: #F7F7F7;
+  --cor-borda: #E5E7EB;
+}

@@ -175,7 +175,7 @@ export default function MinhaAssinatura() {
 
   if (carregando) {
     return (
-      <p className="text-sm text-slate-500">
+      <p className="text-sm text-[#555555]">
         Carregando assinatura...
       </p>
     );
@@ -191,7 +191,7 @@ export default function MinhaAssinatura() {
 
   if (!resumo?.plano) {
     return (
-      <p className="text-slate-600">
+      <p className="text-[#444444]">
         Nenhum plano disponível.
       </p>
     );
@@ -231,25 +231,25 @@ export default function MinhaAssinatura() {
   return (
     <div className="mx-auto max-w-5xl space-y-7">
       <div>
-        <h1 className="text-3xl font-semibold text-[#071B2E]">
+        <h1 className="text-3xl font-semibold text-[#111111]">
           Minha assinatura
         </h1>
 
-        <p className="mt-2 text-sm text-slate-500">
+        <p className="mt-2 text-sm text-[#555555]">
           Gerencie seu plano e acompanhe seus pagamentos.
         </p>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-3">
-        <section className="space-y-6 rounded-2xl bg-[#071B2E] p-7 text-white lg:col-span-2">
+        <section className="space-y-6 rounded-2xl border border-gray-200 bg-white p-7 text-[#111111] shadow-sm lg:col-span-2">
           <div className="flex items-center gap-3">
             <div className="rounded-xl bg-white/10 p-3">
-              <Building2 className="text-[#C9A34A]" />
+              <Building2 className="text-[#FE540C]" />
             </div>
 
             <div>
-              <p className="text-xs uppercase tracking-widest text-slate-300">
-                Domaterra
+              <p className="text-xs font-semibold uppercase tracking-widest text-[#FE540C]">
+                Oxus
               </p>
 
               <h2 className="text-xl font-semibold">
@@ -259,39 +259,39 @@ export default function MinhaAssinatura() {
           </div>
 
           <div>
-            <span className="text-4xl font-bold">
+            <span className="text-4xl font-bold text-[#FE540C]">
               {moeda.format(plano.price)}
             </span>
 
-            <span className="ml-2 text-sm text-slate-300">
+            <span className="ml-2 text-sm text-[#666666]">
               /mês
             </span>
           </div>
 
           <div className="grid gap-4 border-t border-white/15 pt-6 sm:grid-cols-2">
             <div className="flex items-start gap-3">
-              <CheckCircle2 className="text-[#C9A34A]" />
+              <CheckCircle2 className="text-[#FE540C]" />
 
               <div>
                 <p className="font-medium">
                   Até {limite} imóveis
                 </p>
 
-                <p className="text-xs text-slate-300">
+                <p className="text-xs text-[#555555]">
                   Publicados ou em análise
                 </p>
               </div>
             </div>
 
             <div className="flex items-start gap-3">
-              <CreditCard className="text-[#C9A34A]" />
+              <CreditCard className="text-[#FE540C]" />
 
               <div>
                 <p className="font-medium">
                   Assinatura mensal
                 </p>
 
-                <p className="text-xs text-slate-300">
+                <p className="text-xs text-[#666666]">
                   Pagamento via PIX
                 </p>
               </div>
@@ -300,7 +300,7 @@ export default function MinhaAssinatura() {
         </section>
 
         <section className="rounded-2xl bg-white p-6 shadow-sm">
-          <h2 className="text-lg font-semibold text-[#071B2E]">
+          <h2 className="text-lg font-semibold text-[#111111]">
             Situação atual
           </h2>
 
@@ -310,7 +310,7 @@ export default function MinhaAssinatura() {
                 Status
               </p>
 
-              <p className="mt-1 text-slate-500">
+              <p className="mt-1 text-[#555555]">
                 {nomeStatus}
               </p>
             </div>
@@ -318,7 +318,7 @@ export default function MinhaAssinatura() {
             <div className="flex items-start gap-3">
               <CalendarDays
                 size={19}
-                className="text-[#C9A34A]"
+                className="text-[#FE540C]"
               />
 
               <div>
@@ -326,7 +326,7 @@ export default function MinhaAssinatura() {
                   Início
                 </p>
 
-                <p className="mt-1 text-slate-500">
+                <p className="mt-1 text-[#555555]">
                   {formatarData(assinatura?.starts_at)}
                 </p>
               </div>
@@ -335,7 +335,7 @@ export default function MinhaAssinatura() {
             <div className="flex items-start gap-3">
               <RefreshCw
                 size={19}
-                className="text-[#C9A34A]"
+                className="text-[#FE540C]"
               />
 
               <div>
@@ -343,7 +343,7 @@ export default function MinhaAssinatura() {
                   Validade
                 </p>
 
-                <p className="mt-1 text-slate-500">
+                <p className="mt-1 text-[#555555]">
                   {formatarData(assinatura?.expires_at)}
                 </p>
               </div>
@@ -355,33 +355,33 @@ export default function MinhaAssinatura() {
       <section className="rounded-2xl bg-white p-7 shadow-sm">
         <div className="flex items-center justify-between gap-4">
           <div>
-            <h2 className="text-lg font-semibold text-[#071B2E]">
+            <h2 className="text-lg font-semibold text-[#111111]">
               Utilização dos anúncios
             </h2>
 
-            <p className="mt-2 text-sm text-slate-500">
+            <p className="mt-2 text-sm text-[#555555]">
               Vagas ocupadas no seu plano.
             </p>
           </div>
 
-          <span className="text-2xl font-semibold text-[#071B2E]">
+          <span className="text-2xl font-semibold text-[#111111]">
             {imoveisUtilizados}/{limite}
           </span>
         </div>
 
         <div className="mt-6 h-3 overflow-hidden rounded-full bg-slate-100">
           <div
-            className="h-full rounded-full bg-[#C9A34A]"
+            className="h-full rounded-full bg-[#FE540C]"
             style={{ width: `${porcentagem}%` }}
           />
         </div>
 
-        <p className="mt-3 text-sm text-slate-500">
+        <p className="mt-3 text-sm text-[#555555]">
           {Math.max(limite - imoveisUtilizados, 0)} vagas disponíveis.
         </p>
       </section>
 
-      <section className="rounded-2xl border border-amber-200 bg-amber-50 p-7">
+      <section className="rounded-2xl border border-[#FFD7C5] bg-[#FFF7F3] p-7">
         <div className="flex items-start gap-3">
           {assinaturaValida ? (
             <CheckCircle2
@@ -394,7 +394,7 @@ export default function MinhaAssinatura() {
           )}
 
           <div>
-            <h2 className="font-semibold text-[#071B2E]">
+            <h2 className="font-semibold text-[#111111]">
               {assinaturaValida
                 ? "Assinatura ativa"
                 : aguardandoPagamento
@@ -431,7 +431,7 @@ export default function MinhaAssinatura() {
                 placeholder="Digite seu CPF ou CNPJ"
                 inputMode="numeric"
                 maxLength={18}
-                className="w-full max-w-md rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-[#C9A34A]"
+                className="w-full max-w-md rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-[#FE540C]"
               />
             </div>
 
@@ -439,7 +439,7 @@ export default function MinhaAssinatura() {
               type="button"
               onClick={iniciarContratacao}
               disabled={contratando}
-              className="flex items-center gap-2 rounded-lg bg-[#071B2E] px-6 py-3 text-sm font-semibold text-white disabled:opacity-50"
+              className="flex items-center gap-2 rounded-lg bg-[#FE540C] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#E64B0A] disabled:opacity-50"
             >
               {contratando ? (
                 <Loader2
@@ -470,9 +470,9 @@ export default function MinhaAssinatura() {
         )}
 
         {assinatura && (
-          <div className="mt-6 rounded-xl border border-amber-200 bg-white p-6">
+          <div className="mt-6 rounded-xl border border-[#FFD7C5] bg-white p-6">
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <h3 className="font-semibold text-[#071B2E]">
+              <h3 className="font-semibold text-[#111111]">
                 {assinaturaValida
                   ? "Renovar assinatura"
                   : "Pagamento via PIX"}
@@ -482,7 +482,7 @@ export default function MinhaAssinatura() {
                 type="button"
                 onClick={carregarPix}
                 disabled={carregandoPix}
-                className="flex items-center gap-2 text-sm font-medium text-[#071B2E] disabled:opacity-50"
+                className="flex items-center gap-2 text-sm font-medium text-[#111111] disabled:opacity-50"
               >
                 <RefreshCw
                   size={16}
@@ -496,7 +496,7 @@ export default function MinhaAssinatura() {
             </div>
 
             {carregandoPix && (
-              <p className="mt-5 text-sm text-slate-500">
+              <p className="mt-5 text-sm text-[#555555]">
                 Consultando cobrança no Asaas...
               </p>
             )}
@@ -510,7 +510,7 @@ export default function MinhaAssinatura() {
             {!carregandoPix &&
               dadosPix &&
               !dadosPix.disponivel && (
-                <p className="mt-5 text-sm text-slate-600">
+                <p className="mt-5 text-sm text-[#444444]">
                   {assinaturaValida
                     ? "Sua assinatura está em dia. A próxima cobrança PIX aparecerá aqui quando estiver disponível no Asaas."
                     : dadosPix.message}
@@ -524,11 +524,11 @@ export default function MinhaAssinatura() {
                   <div className="flex flex-col items-center gap-3">
                     <img
                       src={`data:image/png;base64,${dadosPix.pix.encodedImage}`}
-                      alt="QR Code PIX da assinatura Domaterra"
+                      alt="QR Code PIX da assinatura Oxus"
                       className="h-56 w-56 rounded-xl border border-slate-200 bg-white p-2"
                     />
 
-                    <p className="text-center text-sm text-slate-500">
+                    <p className="text-center text-sm text-[#555555]">
                       Escaneie o QR Code com seu aplicativo bancário.
                     </p>
                   </div>
@@ -551,7 +551,7 @@ export default function MinhaAssinatura() {
                   </div>
 
                   <div>
-                    <label className="mb-2 block text-sm font-medium text-[#071B2E]">
+                    <label className="mb-2 block text-sm font-medium text-[#111111]">
                       PIX copia e cola
                     </label>
 
@@ -565,7 +565,7 @@ export default function MinhaAssinatura() {
                     <button
                       type="button"
                       onClick={copiarPix}
-                      className="mt-3 flex items-center gap-2 rounded-lg bg-[#071B2E] px-5 py-3 text-sm font-semibold text-white"
+                      className="mt-3 flex items-center gap-2 rounded-lg bg-[#FE540C] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#E64B0A]"
                     >
                       {copiado ? (
                         <CheckCircle2 size={17} />
@@ -579,10 +579,9 @@ export default function MinhaAssinatura() {
                     </button>
                   </div>
 
-                  <p className="text-xs leading-5 text-slate-500">
-                    O pagamento será confirmado pelo Asaas.
-                    A assinatura ainda não será ativada
-                    automaticamente nesta etapa.
+                  <p className="text-xs leading-5 text-[#555555]">
+                    O pagamento será confirmado automaticamente pelo Asaas.
+                    Após a confirmação, a validade da assinatura será atualizada.
                   </p>
                 </div>
               )}

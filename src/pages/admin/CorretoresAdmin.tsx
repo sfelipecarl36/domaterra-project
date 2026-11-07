@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import {
   Search,
@@ -118,71 +119,93 @@ export default function CorretoresAdmin() {
 
   return (
     <div className="space-y-7">
+      {/* Cabeçalho */}
       <div>
-        <h1 className="text-3xl font-semibold text-[#071B2E]">
+        <h1 className="text-3xl font-semibold text-[#111111]">
           Corretores
         </h1>
 
-        <p className="mt-2 text-sm text-slate-500">
+        <p className="mt-2 text-sm text-[#555555]">
           Consulte e avalie os cadastros profissionais.
         </p>
       </div>
 
-      <div className="flex items-center gap-3 rounded-xl border border-slate-100 bg-white px-5 py-4">
-        <Search size={19} className="text-slate-400" />
+      {/* Campo de busca */}
+      <div className="flex items-center gap-3 rounded-xl border border-gray-200 bg-white px-5 py-4 shadow-sm transition-colors focus-within:border-[#FE540C]">
+        <Search
+          size={19}
+          className="shrink-0 text-[#FE540C]"
+        />
 
         <input
           value={busca}
           onChange={(e) => setBusca(e.target.value)}
           placeholder="Buscar por nome ou CRECI"
-          className="w-full text-sm outline-none"
+          className="w-full bg-transparent text-sm text-[#111111] placeholder:text-[#888888] outline-none"
         />
       </div>
 
+      {/* Mensagens */}
       {erro && (
-        <p role="alert" className="rounded-xl bg-red-50 p-4 text-sm text-red-700">
+        <p
+          role="alert"
+          className="rounded-xl bg-red-50 p-4 text-sm text-red-700"
+        >
           {erro}
         </p>
       )}
 
       {mensagem && (
-        <p role="status" className="rounded-xl bg-green-50 p-4 text-sm text-green-700">
+        <p
+          role="status"
+          className="rounded-xl bg-green-50 p-4 text-sm text-green-700"
+        >
           {mensagem}
         </p>
       )}
 
+      {/* Listagem */}
       {carregando ? (
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-[#555555]">
           Carregando corretores...
         </p>
       ) : filtrados.length === 0 ? (
-        <div className="rounded-xl bg-white p-10 text-center text-sm text-slate-500">
-          Nenhum corretor encontrado.
+        <div className="rounded-2xl border border-gray-200 bg-white p-10 text-center shadow-sm">
+          <Search
+            size={36}
+            className="mx-auto text-[#FE540C]"
+          />
+
+          <p className="mt-4 text-sm text-[#555555]">
+            Nenhum corretor encontrado.
+          </p>
         </div>
       ) : (
         <div className="space-y-4">
           {filtrados.map((corretor) => (
             <div
               key={corretor.id}
-              className="rounded-2xl border border-slate-100 bg-white p-5 shadow-sm sm:p-6"
+              className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition-all hover:border-[#FE540C]/30 hover:shadow-md sm:p-6"
             >
               <div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-center">
+                {/* Dados do corretor */}
                 <div>
-                  <h2 className="text-lg font-semibold text-[#071B2E]">
+                  <h2 className="text-lg font-semibold text-[#111111]">
                     {corretor.full_name || "Nome não informado"}
                   </h2>
 
-                  <p className="mt-2 text-sm text-slate-500">
+                  <p className="mt-2 text-sm text-[#555555]">
                     CRECI: {corretor.creci || "Não informado"}
                     {corretor.creci_state
                       ? ` / ${corretor.creci_state}`
                       : ""}
                   </p>
 
-                  <p className="mt-1 text-sm text-slate-500">
+                  <p className="mt-1 text-sm text-[#555555]">
                     Telefone: {corretor.phone || "Não informado"}
                   </p>
 
+                  {/* Situação cadastral */}
                   <div className="mt-3 flex items-center gap-2 text-xs">
                     {corretor.approval_status === "approved" ? (
                       <span className="flex items-center gap-1 rounded-full bg-green-50 px-3 py-1 font-semibold text-green-700">
@@ -203,6 +226,7 @@ export default function CorretoresAdmin() {
                   </div>
                 </div>
 
+                {/* Botões de aprovação e rejeição */}
                 <div className="flex flex-wrap gap-3">
                   {corretor.approval_status !== "approved" && (
                     <button
@@ -211,8 +235,9 @@ export default function CorretoresAdmin() {
                       onClick={() =>
                         alterarStatus(corretor, "approved")
                       }
-                      className="rounded-lg bg-[#071B2E] px-5 py-3 text-sm font-semibold text-white disabled:opacity-50"
+                      className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#FE540C] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#E64B0A] disabled:cursor-not-allowed disabled:opacity-50"
                     >
+                      <CheckCircle2 size={17} />
                       Aprovar
                     </button>
                   )}
@@ -224,8 +249,9 @@ export default function CorretoresAdmin() {
                       onClick={() =>
                         alterarStatus(corretor, "rejected")
                       }
-                      className="rounded-lg border border-red-200 px-5 py-3 text-sm font-semibold text-red-600 disabled:opacity-50"
+                      className="inline-flex items-center justify-center gap-2 rounded-lg border border-red-200 bg-white px-5 py-3 text-sm font-semibold text-red-600 transition-colors hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-50"
                     >
+                      <XCircle size={17} />
                       Rejeitar
                     </button>
                   )}

@@ -105,12 +105,12 @@ export default function DashboardAdmin() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-semibold text-[#071B2E]">
+        <h1 className="text-3xl font-semibold text-[#111111]">
           Visão geral
         </h1>
 
         <p className="mt-2 text-sm text-slate-500">
-          Acompanhe os principais números da Domaterra.
+          Acompanhe os principais números da Oxus.
         </p>
       </div>
 
@@ -139,12 +139,12 @@ export default function DashboardAdmin() {
                     {item.titulo}
                   </p>
 
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#071B2E]/5 text-[#071B2E]">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-[#111111]">
                     <Icon size={22} />
                   </div>
                 </div>
 
-                <p className="mt-5 text-3xl font-semibold text-[#071B2E]">
+                <p className="mt-5 text-3xl font-semibold text-[#111111]">
                   {item.valor}
                 </p>
               </div>

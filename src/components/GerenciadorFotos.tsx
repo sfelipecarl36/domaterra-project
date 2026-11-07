@@ -132,7 +132,7 @@ export default function GerenciadorFotos({ imovelId }: Props) {
   return (
     <section className="space-y-6 rounded-2xl border border-slate-100 bg-white p-6 shadow-sm sm:p-8">
       <div>
-        <h2 className="text-xl font-semibold text-[#071B2E]">
+        <h2 className="text-xl font-semibold text-[#111111]">
           Fotografias do imóvel
         </h2>
 
@@ -142,10 +142,10 @@ export default function GerenciadorFotos({ imovelId }: Props) {
         </p>
       </div>
 
-      <label className="flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-slate-200 bg-slate-50 px-5 py-10 text-center transition-colors hover:border-[#C9A34A]">
-        <ImagePlus size={36} className="text-[#C9A34A]" />
+      <label className="flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-slate-200 bg-slate-50 px-5 py-10 text-center transition-colors hover:border-[#FE540C]">
+        <ImagePlus size={36} className="text-[#FE540C]" />
 
-        <span className="mt-4 text-sm font-semibold text-[#071B2E]">
+        <span className="mt-4 text-sm font-semibold text-[#111111]">
           Selecionar fotografias
         </span>
 
@@ -168,7 +168,7 @@ export default function GerenciadorFotos({ imovelId }: Props) {
 
       {arquivos.length > 0 && (
         <div className="rounded-xl bg-slate-50 p-4">
-          <p className="text-sm font-medium text-[#071B2E]">
+          <p className="text-sm font-medium text-[#111111]">
             {arquivos.length} arquivo(s) selecionado(s)
           </p>
 
@@ -180,7 +180,7 @@ export default function GerenciadorFotos({ imovelId }: Props) {
             type="button"
             disabled={processando}
             onClick={enviar}
-            className="mt-4 flex items-center gap-2 rounded-lg bg-[#071B2E] px-5 py-3 text-sm font-semibold text-white disabled:opacity-50"
+            className="mt-4 flex items-center gap-2 rounded-lg bg-white px-5 py-3 text-sm font-semibold text-white disabled:opacity-50"
           >
             {processando ? (
               <LoaderCircle size={18} className="animate-spin" />
@@ -230,7 +230,7 @@ export default function GerenciadorFotos({ imovelId }: Props) {
                 />
 
                 {index === 0 && (
-                  <span className="absolute left-2 top-2 rounded-md bg-[#C9A34A] px-2 py-1 text-xs font-semibold text-[#071B2E]">
+                  <span className="absolute left-2 top-2 rounded-md bg-[#FE540C] px-2 py-1 text-xs font-semibold text-[#111111]">
                     Principal
                   </span>
                 )}
@@ -241,7 +241,7 @@ export default function GerenciadorFotos({ imovelId }: Props) {
                   type="button"
                   disabled={processando || index === 0}
                   onClick={() => tornarPrincipal(foto)}
-                  className="flex items-center gap-1 text-xs font-medium text-[#071B2E] disabled:opacity-40"
+                  className="flex items-center gap-1 text-xs font-medium text-[#111111] disabled:opacity-40"
                 >
                   <Star size={15} />
                   Principal

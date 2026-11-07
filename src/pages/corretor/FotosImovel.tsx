@@ -48,14 +48,14 @@ export default function FotosImovel() {
     <div className="mx-auto max-w-5xl space-y-6">
       <Link
         to="/corretor/imoveis"
-        className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-[#071B2E]"
+        className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-[#111111]"
       >
         <ArrowLeft size={17} />
         Voltar aos imóveis
       </Link>
 
       <div>
-        <h1 className="text-3xl font-semibold text-[#071B2E]">
+        <h1 className="text-3xl font-semibold text-[#111111]">
           Fotografias do imóvel
         </h1>
 

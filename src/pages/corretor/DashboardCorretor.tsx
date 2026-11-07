@@ -86,7 +86,7 @@ export default function DashboardCorretor() {
     rejected: {
       titulo: "Cadastro não aprovado",
       texto:
-        "Seu cadastro precisa de revisão. Entre em contato com a administração da Domaterra.",
+        "Seu cadastro precisa de revisão. Entre em contato com a administração da Oxus.",
       classe: "bg-red-50 border-red-200 text-red-800",
     },
   };
@@ -97,12 +97,12 @@ export default function DashboardCorretor() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-2xl font-semibold text-[#071B2E] sm:text-3xl">
+        <h1 className="text-2xl font-semibold text-[#111111] sm:text-3xl">
           Olá, {nome}!
         </h1>
 
         <p className="mt-2 text-sm text-slate-500">
-          Bem-vindo ao seu painel Domaterra.
+          Bem-vindo ao seu painel Oxus.
         </p>
       </div>
 
@@ -152,11 +152,11 @@ export default function DashboardCorretor() {
           to="/corretor/imoveis"
           className="group rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
         >
-          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[#071B2E]/5 text-[#071B2E]">
+          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-white/5 text-[#111111]">
             <House size={24} />
           </div>
 
-          <h3 className="text-lg font-semibold text-[#071B2E]">
+          <h3 className="text-lg font-semibold text-[#111111]">
             Meus imóveis
           </h3>
 
@@ -164,7 +164,7 @@ export default function DashboardCorretor() {
             Acompanhe os imóveis cadastrados na plataforma.
           </p>
 
-          <span className="mt-5 flex items-center gap-2 text-sm font-semibold text-[#C9A34A]">
+          <span className="mt-5 flex items-center gap-2 text-sm font-semibold text-[#FE540C]">
             Acessar imóveis
             <ArrowRight size={17} />
           </span>
@@ -174,11 +174,11 @@ export default function DashboardCorretor() {
           to="/corretor/perfil"
           className="group rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
         >
-          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[#071B2E]/5 text-[#071B2E]">
+          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-white/5 text-[#111111]">
             <UserRound size={24} />
           </div>
 
-          <h3 className="text-lg font-semibold text-[#071B2E]">
+          <h3 className="text-lg font-semibold text-[#111111]">
             Meu perfil
           </h3>
 
@@ -186,7 +186,7 @@ export default function DashboardCorretor() {
             Consulte seus dados profissionais e situação cadastral.
           </p>
 
-          <span className="mt-5 flex items-center gap-2 text-sm font-semibold text-[#C9A34A]">
+          <span className="mt-5 flex items-center gap-2 text-sm font-semibold text-[#FE540C]">
             Ver perfil
             <ArrowRight size={17} />
           </span>
@@ -214,12 +214,12 @@ function Indicador({
           {titulo}
         </p>
 
-        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#071B2E]/5 text-[#071B2E]">
+        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-[#111111]">
           <Icon size={22} />
         </div>
       </div>
 
-      <p className="mt-5 text-3xl font-semibold text-[#071B2E]">
+      <p className="mt-5 text-3xl font-semibold text-[#111111]">
         {valor}
       </p>
     </div>

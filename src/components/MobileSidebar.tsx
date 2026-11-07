@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import {
   X,
   House,
@@ -63,12 +63,12 @@ export default function MobileSidebar({
         role="dialog"
         aria-modal="true"
         aria-label="Menu de navegação"
-        className={`absolute right-0 top-0 flex h-full w-[82%] max-w-80 flex-col bg-[#071B2E] shadow-xl transition-transform duration-300 ${
+        className={`absolute right-0 top-0 flex h-full w-[82%] max-w-80 flex-col bg-white shadow-xl transition-transform duration-300 ${
           aberto ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex items-center justify-between bg-[#071B2E] px-6 py-6">
-          <span className="text-lg font-semibold tracking-wide text-[#C9A34A]">
+        <div className="flex items-center justify-between border-b border-gray-200 px-6 py-6">
+          <span className="text-lg font-semibold tracking-wide text-[#FE540C]">
             MENU
           </span>
 
@@ -76,7 +76,7 @@ export default function MobileSidebar({
             type="button"
             onClick={fechar}
             aria-label="Fechar menu"
-            className="text-white"
+            className="rounded-lg p-2 text-[#111111] transition-colors hover:bg-[#FFF1EB] hover:text-[#FE540C]"
           >
             <X size={25} />
           </button>
@@ -87,21 +87,33 @@ export default function MobileSidebar({
             const Icone = link.icone;
 
             return (
-              <Link
+              <NavLink
                 key={link.rota}
                 to={link.rota}
+                end={link.rota === "/"}
                 onClick={fechar}
-                className="flex items-center gap-4 rounded-lg px-4 py-3 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-100"
+                className={({ isActive }) =>
+                  `flex items-center gap-4 rounded-xl px-4 py-3 text-sm font-medium transition-colors ${
+                    isActive
+                      ? "bg-[#FE540C] text-white"
+                      : "text-[#333333] hover:bg-[#FFF1EB] hover:text-[#FE540C]"
+                  }`
+                }
               >
                 <Icone size={20} />
                 {link.nome}
-              </Link>
+              </NavLink>
             );
           })}
         </nav>
 
-        <div className="mt-auto border-t border-white/10 p-6 text-center text-xs text-[#C9A34A]">
-          Domaterra Negócios Imobiliários
+        <div className="mt-auto border-t border-gray-200 p-6 text-center">
+          <p className="text-xs font-semibold uppercase tracking-wider text-[#FE540C]">
+            OXUS
+          </p>
+          <p className="mt-1 text-xs text-[#666666]">
+            Negócios Imobiliários
+          </p>
         </div>
       </aside>
     </div>

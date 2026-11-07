@@ -14,12 +14,12 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 border-b border-[#C9A34A]/20 bg-[#071B2E]">
+      <header className="sticky top-0 z-40 border-b border-gray-200 bg-white">
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8">
           <Link to="/" className="flex items-center">
             <img
               src="/logo.png"
-              alt="Domaterra"
+              alt="Oxus Imobiliária"
               className="h-14 w-auto max-w-44 object-contain"
             />
           </Link>
@@ -29,9 +29,12 @@ export default function Header() {
               <NavLink
                 key={link.rota}
                 to={link.rota}
+                end={link.rota === "/"}
                 className={({ isActive }) =>
-                  `text-sm font-medium transition-colors hover:text-[#C9A34A] ${
-                    isActive ? "text-[#C9A34A]" : "text-white"
+                  `text-sm font-medium transition-colors hover:text-[#FE540C] ${
+                    isActive
+                      ? "text-[#FE540C]"
+                      : "text-[#111111]"
                   }`
                 }
               >
@@ -42,7 +45,7 @@ export default function Header() {
 
           <Link
             to="/login"
-            className="hidden items-center gap-2 rounded-lg border border-[#C9A34A] px-5 py-3 text-sm font-medium text-[#C9A34A] transition-colors hover:bg-[#C9A34A] hover:text-[#071B2E] md:flex"
+            className="hidden items-center gap-2 rounded-lg border border-[#FE540C] px-5 py-3 text-sm font-medium text-[#FE540C] transition-colors hover:bg-[#FE540C] hover:text-white md:flex"
           >
             <UserRound size={18} />
             Área do corretor
@@ -52,7 +55,7 @@ export default function Header() {
             type="button"
             onClick={() => setMenuAberto(true)}
             aria-label="Abrir menu"
-            className="rounded-lg p-2 text-[#C9A34A] md:hidden"
+            className="rounded-lg p-2 text-[#FE540C] md:hidden"
           >
             <Menu size={27} />
           </button>
