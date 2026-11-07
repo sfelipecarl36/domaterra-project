@@ -13,6 +13,16 @@ export const imoveisExemplo: Imovel[] = [
     area: 110,
     imagem: null,
     destaque: true,
+    descricao:
+  "Apartamento com ambientes amplos, sala de estar, cozinha, quartos confortáveis e excelente localização.",
+    endereco: "Endereço de demonstração",
+    vagas: 2,
+    tipo: "Apartamento",
+    corretor: {
+    nome: "Corretor de demonstração",
+    telefone: "",
+    creci: "",
+    },
   },
   {
     id: "2",

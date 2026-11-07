@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
+
 export type Imovel = {
   id: string;
   titulo: string;
@@ -20,7 +21,20 @@ export type Imovel = {
   area: number;
   imagem: string | null;
   destaque: boolean;
+
+  // Infos opcionais
+  descricao?: string;
+  endereco?: string;
+  vagas?: number;
+  tipo?: string;
+  imagens?: string[];
+  corretor?: {
+    nome: string;
+    telefone: string;
+    creci?: string;
+  };
 };
+
 
 type Props = {
   imovel: Imovel;
