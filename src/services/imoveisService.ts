@@ -25,6 +25,11 @@ type ImovelBanco = {
   property_images: FotoBanco[];
 };
 
+type ImovelPublicoBanco = Omit<
+  ImovelBanco,
+  "property_images"
+>;
+
 const campos = `
   id,
   broker_id,
@@ -45,6 +50,18 @@ const campos = `
     position
   )
 `;
+
+async function carregarFotos(imovelId: string) {
+  const { data, error } = await supabase
+    .from("property_images")
+    .select("storage_path, position")
+    .eq("property_id", imovelId)
+    .order("position", { ascending: true });
+
+  if (error) throw error;
+
+  return data ?? [];
+}
 
 async function obterUrlFoto(caminho: string) {
   const { data, error } = await supabase.storage
@@ -107,18 +124,23 @@ async function converterImovel(
 }
 
 export async function buscarImoveis(): Promise<Imovel[]> {
-  const { data, error } = await supabase
-    .from("properties")
-    .select(campos)
-    .eq("status", "published")
-    .order("created_at", { ascending: false });
+  const { data, error } = await supabase.rpc(
+    "buscar_imoveis_publicos"
+  );
 
   if (error) throw error;
 
+  const imoveis = (data ?? []) as ImovelPublicoBanco[];
+
   return Promise.all(
-    ((data ?? []) as ImovelBanco[]).map((imovel) =>
-      converterImovel(imovel)
-    )
+    imoveis.map(async (item) => {
+      const fotos = await carregarFotos(item.id);
+
+      return converterImovel({
+        ...item,
+        property_images: fotos,
+      });
+    })
   );
 }
 
@@ -126,32 +148,44 @@ export async function buscarImovelPorId(
   id: string
 ): Promise<Imovel | null> {
   const { data, error } = await supabase
-    .from("properties")
-    .select(campos)
+    .rpc("buscar_imoveis_publicos")
     .eq("id", id)
-    .eq("status", "published")
     .maybeSingle();
 
   if (error) throw error;
   if (!data) return null;
 
-  return converterImovel(data as ImovelBanco, true);
+  const imovel = data as ImovelPublicoBanco;
+
+  const fotos = await carregarFotos(imovel.id);
+
+  return converterImovel(
+    {
+      ...imovel,
+      property_images: fotos,
+    },
+    true
+  );
 }
 
 export async function buscarImoveisDestaque(): Promise<Imovel[]> {
   const { data, error } = await supabase
-    .from("properties")
-    .select(campos)
-    .eq("status", "published")
+    .rpc("buscar_imoveis_publicos")
     .eq("featured", true)
-    .order("created_at", { ascending: false })
     .limit(6);
 
   if (error) throw error;
 
+  const imoveis = (data ?? []) as ImovelPublicoBanco[];
+
   return Promise.all(
-    ((data ?? []) as ImovelBanco[]).map((imovel) =>
-      converterImovel(imovel)
-    )
+    imoveis.map(async (item) => {
+      const fotos = await carregarFotos(item.id);
+
+      return converterImovel({
+        ...item,
+        property_images: fotos,
+      });
+    })
   );
 }

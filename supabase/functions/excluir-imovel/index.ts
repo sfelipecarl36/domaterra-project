@@ -33,9 +33,24 @@ Deno.serve(async (req) => {
   }
 
   try {
-    const supabaseUrl = Deno.env.get("SUPABASE_URL");
-    const anonKey = Deno.env.get("SUPABASE_ANON_KEY");
+
+
+    const anonKey = JSON.parse(
+            Deno.env.get("SUPABASE_PUBLISHABLE_KEYS") || "{}"
+        );
+
+        const serviceKey = JSON.parse(
+            Deno.env.get("SUPABASE_SECRET_KEYS") || "{}"
+        );
+        const chavePublica = anonKey.default as string | undefined;
+        const chaveServico = serviceKey.default as string | undefined;
+
+
+    // const supabaseUrl = Deno.env.get("SUPABASE_URL");
+    // const anonKey = Deno.env.get("SUPABASE_ANON_KEY");
     const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+
+    
 
     if (!supabaseUrl || !anonKey || !serviceKey) {
       throw new Error("Configuração do servidor incompleta.");
