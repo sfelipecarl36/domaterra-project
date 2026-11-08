@@ -122,6 +122,23 @@ export async function buscarImovelAdmin(id: string) {
   return prepararImovel(data as ImovelBanco);
 }
 
+
+export async function alterarDestaqueImovel(
+  id: string,
+  destaque: boolean
+) {
+  const { error } = await supabase.rpc(
+    "admin_alterar_destaque_imovel",
+    {
+      p_imovel_id: id,
+      p_destaque: destaque,
+    }
+  );
+
+  if (error) throw error;
+}
+
+
 export async function alterarStatusImovel(
   id: string,
   status: "draft" | "pending_review" | "published" | "paused"

@@ -46,26 +46,23 @@ export default function MobileSidebar({
 
   return (
     <div
-      className={`fixed inset-0 z-50 md:hidden ${
-        aberto ? "visible" : "invisible pointer-events-none"
-      }`}
+      className={`fixed inset-0 z-50 lg:hidden ${aberto ? "visible" : "invisible pointer-events-none"
+        }`}
     >
       <button
         type="button"
         aria-label="Fechar menu"
         onClick={fechar}
-        className={`absolute inset-0 w-full bg-black/50 transition-opacity duration-300 ${
-          aberto ? "opacity-100" : "opacity-0"
-        }`}
+        className={`absolute inset-0 w-full bg-black/50 transition-opacity duration-300 ${aberto ? "opacity-100" : "opacity-0"
+          }`}
       />
 
       <aside
         role="dialog"
         aria-modal="true"
         aria-label="Menu de navegação"
-        className={`absolute right-0 top-0 flex h-full w-[82%] max-w-80 flex-col bg-white shadow-xl transition-transform duration-300 ${
-          aberto ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`absolute right-0 top-0 flex h-full w-[82%] max-w-80 flex-col bg-white shadow-xl transition-transform duration-300 ${aberto ? "translate-x-0" : "translate-x-full"
+          }`}
       >
         <div className="flex items-center justify-between border-b border-gray-200 px-6 py-6">
           <span className="text-lg font-semibold tracking-wide text-[#FE540C]">
@@ -93,10 +90,9 @@ export default function MobileSidebar({
                 end={link.rota === "/"}
                 onClick={fechar}
                 className={({ isActive }) =>
-                  `flex items-center gap-4 rounded-xl px-4 py-3 text-sm font-medium transition-colors ${
-                    isActive
-                      ? "bg-[#FE540C] text-white"
-                      : "text-[#333333] hover:bg-[#FFF1EB] hover:text-[#FE540C]"
+                  `flex items-center gap-4 rounded-xl px-4 py-3 text-sm font-medium transition-colors ${isActive
+                    ? "bg-[#FE540C] text-white"
+                    : "text-[#333333] hover:bg-[#FFF1EB] hover:text-[#FE540C]"
                   }`
                 }
               >

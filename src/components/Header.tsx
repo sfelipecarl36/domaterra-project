@@ -1,40 +1,44 @@
-import { Link, NavLink } from "react-router-dom";
-import { Menu, UserRound } from "lucide-react";
 import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { ArrowUpRight, Menu, UserRound } from "lucide-react";
 import MobileSidebar from "./MobileSidebar";
+
+const links = [
+  { nome: "Início", rota: "/" },
+  { nome: "Imóveis", rota: "/imoveis" },
+  { nome: "Seja um corretor", rota: "/cadastro-corretor" },
+];
 
 export default function Header() {
   const [menuAberto, setMenuAberto] = useState(false);
 
-  const links = [
-    { nome: "Início", rota: "/" },
-    { nome: "Imóveis", rota: "/imoveis" },
-    { nome: "Seja um corretor", rota: "/cadastro-corretor" },
-  ];
-
   return (
     <>
-      <header className="sticky top-0 z-40 border-b border-gray-200 bg-white">
-        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8">
-          <Link to="/" className="flex items-center">
+      <header className="sticky top-0 z-40 border-b border-[#EDEDED] bg-white/95 shadow-[0_4px_24px_rgba(0,0,0,0.035)] backdrop-blur-md">
+        <div className="mx-auto flex h-[76px] max-w-7xl items-center justify-between gap-5 px-5 lg:h-[88px] lg:px-8">
+          <Link
+            to="/"
+            aria-label="Oxus Imobiliária — página inicial"
+            className="flex shrink-0 items-center rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FE540C]"
+          >
             <img
               src="/logo.png"
               alt="Oxus Imobiliária"
-              className="h-14 w-auto max-w-44 object-contain"
+              className="h-12 w-auto max-w-[155px] object-contain sm:h-14 sm:max-w-[175px] lg:h-16 lg:max-w-[195px]"
             />
           </Link>
 
-          <nav className="hidden items-center gap-8 md:flex">
+          <nav aria-label="Navegação principal" className="hidden items-center gap-1 lg:flex">
             {links.map((link) => (
               <NavLink
                 key={link.rota}
                 to={link.rota}
                 end={link.rota === "/"}
                 className={({ isActive }) =>
-                  `text-sm font-medium transition-colors hover:text-[#FE540C] ${
+                  `relative rounded-lg px-4 py-3 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-[#FE540C] ${
                     isActive
-                      ? "text-[#FE540C]"
-                      : "text-[#111111]"
+                      ? "bg-orange-50 text-[#FE540C]"
+                      : "text-[#333333] hover:bg-[#F7F7F7] hover:text-[#FE540C]"
                   }`
                 }
               >
@@ -45,19 +49,21 @@ export default function Header() {
 
           <Link
             to="/login"
-            className="hidden items-center gap-2 rounded-lg border border-[#FE540C] px-5 py-3 text-sm font-medium text-[#FE540C] transition-colors hover:bg-[#FE540C] hover:text-white md:flex"
+            className="hidden shrink-0 items-center justify-center gap-2 rounded-xl bg-[#FE540C] px-5 py-3 text-sm font-semibold text-white shadow-[0_5px_14px_rgba(254,84,12,0.16)] transition-all hover:bg-[#E64B0A] hover:shadow-[0_7px_18px_rgba(254,84,12,0.22)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FE540C] lg:inline-flex"
           >
-            <UserRound size={18} />
+            <UserRound size={17} aria-hidden="true" />
             Área do corretor
+            <ArrowUpRight size={16} aria-hidden="true" />
           </Link>
 
           <button
             type="button"
             onClick={() => setMenuAberto(true)}
-            aria-label="Abrir menu"
-            className="rounded-lg p-2 text-[#FE540C] md:hidden"
+            aria-label="Abrir menu de navegação"
+            aria-expanded={menuAberto}
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#F1E6E1] bg-[#FFF7F3] text-[#FE540C] transition-colors hover:border-[#FE540C] hover:bg-[#FFF0E8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FE540C] lg:hidden"
           >
-            <Menu size={27} />
+            <Menu size={23} aria-hidden="true" />
           </button>
         </div>
       </header>
