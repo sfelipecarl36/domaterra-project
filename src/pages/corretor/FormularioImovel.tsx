@@ -376,7 +376,7 @@ export default function FormularioImovel() {
           <button
             type="submit"
             disabled={salvando}
-            className="flex items-center justify-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-semibold text-white hover:bg-[#123754] disabled:opacity-60"
+            className="flex items-center justify-center gap-2 rounded-lg bg-[#fe540c] px-6 py-3 text-sm font-semibold text-white hover:bg-[#E64B0A] disabled:opacity-60"
           >
             <Save size={18} />
             {salvando ? "Salvando..." : "Salvar imóvel"}
